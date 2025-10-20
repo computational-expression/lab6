@@ -19,8 +19,9 @@ def show_sequence(leds, sequence):
     """
     # TODO: Print "Watch the sequence:" and wait 1 second
     
-    # TODO: Loop through the sequence with enumerate to get both index and LED number
+    # TODO: Loop through the sequence using range(len(sequence)) to get index
     # For each step:
+    # - Get led_index = sequence[i]
     # - Print f"  Step {i+1}: LED {led_index + 1}"
     # - Turn on the LED at led_index
     # - Wait 0.6 seconds
@@ -64,8 +65,9 @@ def test_memory(leds, sequence, button):
     
     # TODO: Initialize correct counter to 0
     
-    # TODO: Loop through sequence with enumerate to get index and expected LED
+    # TODO: Loop through sequence using range(len(sequence)) to get index
     # For each step:
+    # - Get expected_led = sequence[i]
     # - Print f"\nStep {i+1}: Which LED comes next?"
     # - Loop through all LEDs (range(len(leds)))
     #   - Turn on current LED

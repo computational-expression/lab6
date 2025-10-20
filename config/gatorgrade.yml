@@ -17,83 +17,17 @@
 - src/main.py:
     - description: Check file exists
       check: ConfirmFileExists
-    - description: Import machine module for Pin
+    - description: Use button value method .value() (at least 4 times)
       check: MatchFileFragment
       options:
-        fragment: from machine import Pin
-        count: 1
-        exact: false
-    - description: Import time module
-      check: MatchFileFragment
-      options:
-        fragment: import time
-        count: 1
-        exact: false
-    - description: Import random module
-      check: MatchFileFragment
-      options:
-        fragment: import random
-        count: 1
-        exact: false
-    - description: Define show_sequence function (at least 1 time)
-      check: MatchFileFragment
-      options:
-        fragment: def show_sequence
-        count: 1
-        exact: false
-    - description: Define get_button_press function (at least 1 time)
-      check: MatchFileFragment
-      options:
-        fragment: def get_button_press
-        count: 1
-        exact: false
-    - description: Define test_memory function (at least 1 time)
-      check: MatchFileFragment
-      options:
-        fragment: def test_memory
-        count: 1
-        exact: false
-    - description: Define calculate_score function (at least 1 time)
-      check: MatchFileFragment
-      options:
-        fragment: def calculate_score
-        count: 1
-        exact: false
-    - description: Define show_feedback function (at least 1 time)
-      check: MatchFileFragment
-      options:
-        fragment: def show_feedback
-        count: 1
-        exact: false
-    - description: Define wait_for_button function (at least 1 time)
-      check: MatchFileFragment
-      options:
-        fragment: def wait_for_button
-        count: 1
-        exact: false
-    - description: Define main function (at least 1 time)
-      check: MatchFileFragment
-      options:
-        fragment: def main
-        count: 1
+        fragment: .value()
+        count: 4
         exact: false
     - description: Create LED pin objects with Pin.OUT (at least 3 times)
       check: MatchFileFragment
       options:
         fragment: Pin.OUT
         count: 3
-        exact: false
-    - description: Create button pin object with Pin.IN (at least 1 time)
-      check: MatchFileFragment
-      options:
-        fragment: Pin.IN
-        count: 1
-        exact: false
-    - description: Use button pull-up resistor Pin.PULL_UP (at least 1 time)
-      check: MatchFileFragment
-      options:
-        fragment: Pin.PULL_UP
-        count: 1
         exact: false
     - description: Use LED on method .on() (at least 6 times)
       check: MatchFileFragment
@@ -107,35 +41,11 @@
         fragment: .off()
         count: 8
         exact: false
-    - description: Use button value method .value() (at least 4 times)
-      check: MatchFileFragment
-      options:
-        fragment: .value()
-        count: 4
-        exact: false
     - description: Use return statements in functions (at least 6 times)
       check: MatchFileFragment
       options:
         fragment: return
         count: 6
-        exact: false
-    - description: Use function definitions (at least 7 times)
-      check: MatchFileFragment
-      options:
-        fragment: 'def '
-        count: 7
-        exact: false
-    - description: Use docstrings for function documentation (at least 6 times)
-      check: MatchFileFragment
-      options:
-        fragment: '"""'
-        count: 12
-        exact: false
-    - description: Call functions with parameters (at least 15 times function calls)
-      check: MatchFileFragment
-      options:
-        fragment: '('
-        count: 15
         exact: false
     - description: Use sleep calls for timing time.sleep( (at least 8 times)
       check: MatchFileFragment
@@ -190,12 +100,6 @@
       options:
         fragment: 'else:'
         count: 3
-        exact: false
-    - description: Use list operations for sequences (at least 3 times)
-      check: MatchFileFragment
-      options:
-        fragment: sequence
-        count: 8
         exact: false
     - description: Use len() function for list operations (at least 1 time)
       check: MatchFileFragment

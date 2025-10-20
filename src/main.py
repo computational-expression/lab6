@@ -19,8 +19,8 @@ def show_sequence(leds, sequence):
     """
     # TODO: Print "Watch the sequence:" and wait 1 second
     
-    # TODO: Loop through the sequence using range(len(sequence)) to get index
-    # For each step:
+    # TODO: Loop through the sequence using range(length) to get index
+    # At each step:
     # - Get led_index = sequence[i]
     # - Print f"  Step {i+1}: LED {led_index + 1}"
     # - Turn on the LED at led_index
@@ -40,12 +40,12 @@ def get_button_press(button, timeout=2):
     Returns:
         bool: True if button pressed, False if timeout
     """
-    # TODO: Create a variable for the start time and assign it to time.time(), which gives current time
+    # TODO: Create a variable to store the start time and assign it to time.time(), which gives current time
     
-    # TODO: Create a while loop that continues while current time - start time < timeout
-    # - Check if button.value() == 0 (button pressed)
-    # - If pressed, wait for release with another while loop for button.value() == 0
-    # - Add time.sleep(0.2) for debounce and return True
+    # TODO: Create a loop that continues until current time - start time < timeout
+    # - Check if button is pressed (button pressed condition)
+    # - If pressed, wait until release with another loop until button released
+    # - Add time.sleep(0.2) to prevent bouncing and return True
     
     # TODO: Return False if timeout reached
 
@@ -64,14 +64,14 @@ def test_memory(leds, sequence, button):
     
     # TODO: Initialize correct counter to 0
     
-    # TODO: Loop through sequence using range(len(sequence)) to get index
-    # For each step:
+    # TODO: Loop through sequence using range(length) to get index
+    # At each step:
     # - Get expected_led = sequence[i]
     # - Print f"\nStep {i+1}: Which LED comes next?"
-    # - Loop through all LEDs (range(len(leds)))
+    # - Loop through all LEDs (range(total_leds))
     #   - Turn on current LED
-    #   - Check if this is the expected LED (led_index == expected_led)
-    #     - If correct: wait for button press with get_button_press()
+    #   - Check if this is the expected LED (led_index matches expected_led)
+    #     - If correct: wait until button press with get_button_press()
     #       - If button pressed: print success, increment correct, do success flash, break
     #       - If timeout: print miss message, turn off LED, return correct
     #     - If wrong LED: just wait 0.4 seconds, turn off, wait 0.2 seconds
@@ -89,11 +89,11 @@ def calculate_score(correct, total, round_num):
     Returns:
         int: Score points
     """
-    # TODO: Check if total == 0, return 0 if so
+    # TODO: Check if total is zero, return 0 if so
     
     # TODO: Calculate accuracy = correct / total
     # TODO: Calculate base_score = int(accuracy * 100)
-    # TODO: Calculate bonus = round_num * 5 if accuracy == 1.0 else 0
+    # TODO: Calculate bonus = round_num * 5 if accuracy is 1.0 otherwise 0
     
     # TODO: Return base_score + bonus
 
@@ -106,11 +106,11 @@ def show_feedback(leds, success):
     """
     # TODO: If success is True:
     # - Flash all LEDs together 3 times
-    # - For each flash: turn all LEDs on, wait 0.3s, turn all off, wait 0.2s
+    # - At each flash: turn all LEDs on, wait 0.3s, turn all off, wait 0.2s
     
     # TODO: If success is False:
     # - Create a chase pattern 2 times
-    # - For each LED: turn on, wait 0.15s, turn off
+    # - At each LED: turn on, wait 0.15s, turn off
 
 def wait_for_button(button):
     """Wait for button press to continue.
@@ -119,9 +119,9 @@ def wait_for_button(button):
         button (Pin): Button pin object
     """
     # TODO: Wait 1.5 seconds, then print "Press button to continue..."
-    # TODO: Wait while button.value() == 1 (not pressed)
-    # TODO: Wait while button.value() == 0 (pressed - wait for release)
-    # TODO: Wait 0.3 seconds for debounce
+    # TODO: Wait until button is not pressed (loop until pressed)
+    # TODO: Wait until button is pressed (loop until released) 
+    # TODO: Wait 0.3 seconds to prevent bouncing
 
 def main():
     """Main function to run the Simon memory game."""
@@ -139,7 +139,7 @@ def main():
     
     # TODO: Initialize total_score = 0 and perfect_rounds = 0
     
-    # TODO: Create game loop for each round (1 to rounds+1):
+    # TODO: Create game loop that iterates through each round (1 to rounds+1):
     # - Print round header with separators
     # - Calculate sequence length = round_num + 1
     # - Generate random sequence using list comprehension and random.randint(0, 2)
@@ -147,7 +147,7 @@ def main():
     # - Call show_sequence() and test_memory()
     # - Calculate score using calculate_score()
     # - Add to total_score
-    # - Check if perfect (correct == seq_length) and increment perfect_rounds
+    # - Check if perfect (correct matches seq_length) and increment perfect_rounds
     # - Print score result
     # - Call show_feedback()
     # - If not last round, call wait_for_button()
@@ -156,7 +156,7 @@ def main():
     # TODO: Print player stats and total score
     
     # TODO: Victory celebration based on performance
-    # - If perfect_rounds == rounds: print "SIMON MASTER!" and special LED pattern
+    # - If perfect_rounds matches rounds: print "SIMON MASTER!" and special LED pattern
     # - Elif perfect_rounds >= rounds // 2: print "Great memory!" and show success feedback
     
     # TODO: Clean up - turn off all LEDs

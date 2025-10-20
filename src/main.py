@@ -40,13 +40,12 @@ def get_button_press(button, timeout=2):
     Returns:
         bool: True if button pressed, False if timeout
     """
-    # TODO: Record the start time using time.time()
+    # TODO: Create a variable for the start time and assign it to time.time(), which gives current time
     
     # TODO: Create a while loop that continues while current time - start time < timeout
     # - Check if button.value() == 0 (button pressed)
     # - If pressed, wait for release with another while loop for button.value() == 0
     # - Add time.sleep(0.2) for debounce and return True
-    # - Add time.sleep(0.05) to prevent busy waiting
     
     # TODO: Return False if timeout reached
 
@@ -163,4 +162,5 @@ def main():
     # TODO: Clean up - turn off all LEDs
     # TODO: Print "Game complete!"
 
-# TODO: Add if __name__ == "__main__": main() to run the game
+if __name__ == "__main__": 
+    main()

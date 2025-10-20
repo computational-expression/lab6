@@ -1,4 +1,3 @@
-````markdown
 # Lab 6: Interactive Control System with Functions
 
 Welcome to Lab 6! In this lab, you will create a **Simon-style memory game** using **functions** to organize your code while integrating 3 LEDs and 1 button to create an engaging sequence matching challenge.
@@ -99,10 +98,34 @@ Your Simon memory game must implement these **7 essential functions**:
 - **Parameters**: List of LED objects and sequence of LED indices to flash
 - **Behavior**: Lights up each LED in order with appropriate timing for memorization
 
-#### 2. `get_button_press(button, timeout)`
+#### 2. `get_button_press(button, timeout)` - see example below
 - **Purpose**: Wait for button press within a time limit
 - **Parameters**: Button object and timeout duration in seconds
 - **Returns**: True if button pressed within timeout, False otherwise
+
+```
+def get_button_press(button, timeout=2):
+    """Wait for button press with timeout.
+    
+    Args:
+        button (Pin): Button pin object
+        timeout (float): Maximum time to wait
+        
+    Returns:
+        bool: True if button pressed, False if timeout
+    """
+    start_time = time.time()
+    
+    while (time.time() - start_time) < timeout:
+        if button.value() == 0:  # Button pressed
+            while button.value() == 0:  # Wait for release
+                time.sleep(0.05)
+            time.sleep(0.2)  # Debounce
+            return True
+        time.sleep(0.05)
+    
+    return False
+    ```
 
 #### 3. `test_memory(leds, sequence, button)`
 - **Purpose**: Test if player can reproduce the memorized sequence
@@ -304,4 +327,3 @@ Verify your submission online and ensure GatorGrade passes automated testing.
 - **Pull-up resistors**: Ensure clean digital signals from buttons
 - **Debouncing**: Software techniques to handle mechanical button behavior
 - **LED feedback**: Visual output to provide user guidance and response
-````

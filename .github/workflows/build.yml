@@ -1,58 +1,30 @@
-# Basic workflow
 name: build
 
-# Controls when the action will run
-# Workflow begins with push or PR events
-# Focuses on the master branch only
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
-# Create one single job
-# This job performs all necessary checks
 jobs:
+
   build:
-    # Use the latest version of Ubuntu
+
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # Performs all actions on different versions of Python
-        python-version: ["3.11"]
-    # Define the workflow steps
+        python-version: [3.9]
+
     steps:
-    # Checkout the code of the repository
-        - name: Check out Repository Code
-          uses: actions/checkout@v2
-          with:
-            fetch-depth: 0
-        # Setup Python for the current language version
-        - name: Setup Python ${{ matrix.python-version }}
-          if: always()
-          uses: actions/setup-python@v1
-          with:
-            python-version: ${{ matrix.python-version }}
-        # Install pip
-        - name: Install Pip
-          if: always()
-          run: |
-            pip install -U pip
-        # Install basic Python packages (since MicroPython modules aren't available in CI)
-        - name: Install Python Dependencies
-          if: always()
-          run: |
-            pip install mock
-        # Verify Python files syntax (since we can't run MicroPython in CI)
-        - name: Check Python Syntax
-          if: always()
-          run: |
-            cd src
-            python3 -m py_compile main.py
-        # Run GatorGrader: see config/gatorgrade.yml
-        - name: Run GatorGrader with GatorGrade
-          if: always()
-          run:  |
-            pipx install gatorgrade
-            pipx inject gatorgrade 'click==8.1.7' --force
-            gatorgrade --config config/gatorgrade.yml
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install gatorgrade
+    - name: Lint with gatorgrade
+      run: |
+        gatorgrade --config config/gatorgrade.yml

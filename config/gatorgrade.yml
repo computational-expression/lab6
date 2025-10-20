@@ -2,15 +2,15 @@
   check: CountCommits
   options:
     count: 6
-- description: Function verification tests pass
+- description: Function verification tests pass (checks that all 7 required functions are defined with correct names and parameters)
   check: ExecuteCommand
   options:
     command: python3 tests/verify_functions.py
-- description: Comprehensive function tests pass
+- description: Comprehensive function tests pass (validates complete Simon game logic, LED patterns, button input, and scoring functionality)
   check: ExecuteCommand
   options:
     command: python3 tests/test_functions.py
-- description: Isolated function tests pass
+- description: Isolated function tests pass (tests individual functions independently to ensure each works correctly with mock hardware)
   check: ExecuteCommand
   options:
     command: python3 tests/test_isolated.py

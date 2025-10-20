@@ -1,0 +1,243 @@
+- description: Have at least a minimum number (at least 6) of commits in repository
+  check: CountCommits
+  options:
+    count: 6
+- description: Function verification tests pass
+  check: ExecuteCommand
+  options:
+    command: python3 tests/verify_functions.py
+- description: Comprehensive function tests pass
+  check: ExecuteCommand
+  options:
+    command: python3 tests/test_functions.py
+- description: Isolated function tests pass
+  check: ExecuteCommand
+  options:
+    command: python3 tests/test_isolated.py
+- src/main.py:
+    - description: Check file exists
+      check: ConfirmFileExists
+    - description: Import machine module for Pin
+      check: MatchFileFragment
+      options:
+        fragment: from machine import Pin
+        count: 1
+        exact: false
+    - description: Import time module
+      check: MatchFileFragment
+      options:
+        fragment: import time
+        count: 1
+        exact: false
+    - description: Import random module
+      check: MatchFileFragment
+      options:
+        fragment: import random
+        count: 1
+        exact: false
+    - description: Define show_sequence function (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: def show_sequence
+        count: 1
+        exact: false
+    - description: Define get_button_press function (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: def get_button_press
+        count: 1
+        exact: false
+    - description: Define test_memory function (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: def test_memory
+        count: 1
+        exact: false
+    - description: Define calculate_score function (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: def calculate_score
+        count: 1
+        exact: false
+    - description: Define show_feedback function (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: def show_feedback
+        count: 1
+        exact: false
+    - description: Define wait_for_button function (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: def wait_for_button
+        count: 1
+        exact: false
+    - description: Define main function (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: def main
+        count: 1
+        exact: false
+    - description: Create LED pin objects with Pin.OUT (at least 3 times)
+      check: MatchFileFragment
+      options:
+        fragment: Pin.OUT
+        count: 3
+        exact: false
+    - description: Create button pin object with Pin.IN (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: Pin.IN
+        count: 1
+        exact: false
+    - description: Use button pull-up resistor Pin.PULL_UP (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: Pin.PULL_UP
+        count: 1
+        exact: false
+    - description: Use LED on method .on() (at least 6 times)
+      check: MatchFileFragment
+      options:
+        fragment: .on()
+        count: 6
+        exact: false
+    - description: Use LED off method .off() (at least 8 times)
+      check: MatchFileFragment
+      options:
+        fragment: .off()
+        count: 8
+        exact: false
+    - description: Use button value method .value() (at least 4 times)
+      check: MatchFileFragment
+      options:
+        fragment: .value()
+        count: 4
+        exact: false
+    - description: Use return statements in functions (at least 6 times)
+      check: MatchFileFragment
+      options:
+        fragment: return
+        count: 6
+        exact: false
+    - description: Use function definitions (at least 7 times)
+      check: MatchFileFragment
+      options:
+        fragment: 'def '
+        count: 7
+        exact: false
+    - description: Use docstrings for function documentation (at least 6 times)
+      check: MatchFileFragment
+      options:
+        fragment: '"""'
+        count: 12
+        exact: false
+    - description: Call functions with parameters (at least 15 times function calls)
+      check: MatchFileFragment
+      options:
+        fragment: '('
+        count: 15
+        exact: false
+    - description: Use sleep calls for timing time.sleep( (at least 8 times)
+      check: MatchFileFragment
+      options:
+        fragment: time.sleep(
+        count: 8
+        exact: false
+    - description: Use print statements for output print( (at least 25 times)
+      check: MatchFileFragment
+      options:
+        fragment: print(
+        count: 25
+        exact: false
+    - description: Use input for user interaction input( (at least 2 times)
+      check: MatchFileFragment
+      options:
+        fragment: input(
+        count: 2
+        exact: false
+    - description: Use for loop iteration (at least 3 times)
+      check: MatchFileFragment
+      options:
+        fragment: 'for '
+        count: 3
+        exact: false
+    - description: Use range function for loops range( (at least 2 times)
+      check: MatchFileFragment
+      options:
+        fragment: range(
+        count: 2
+        exact: false
+    - description: Use if statements for logic (at least 13 times)
+      check: MatchFileFragment
+      options:
+        fragment: 'if '
+        count: 13
+        exact: false
+    - description: Use while loops for control (at least 4 times)
+      check: MatchFileFragment
+      options:
+        fragment: 'while '
+        count: 4
+        exact: false
+    - description: Use elif statements for multiple conditions (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: elif
+        count: 1
+        exact: false
+    - description: Use else statements for alternative paths (at least 3 times)
+      check: MatchFileFragment
+      options:
+        fragment: 'else:'
+        count: 3
+        exact: false
+    - description: Use list operations for sequences (at least 3 times)
+      check: MatchFileFragment
+      options:
+        fragment: sequence
+        count: 8
+        exact: false
+    - description: Use len() function for list operations (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: len(
+        count: 1
+        exact: false
+    - description: Use mathematical operations for scoring (at least 2 times)
+      check: MatchFileFragment
+      options:
+        fragment: ' * '
+        count: 2
+        exact: false
+    - description: Use random module for sequence generation (at least 1 time)
+      check: MatchFileFragment
+      options:
+        fragment: random.
+        count: 1
+        exact: false
+    - description: Use comparison operations for game logic (at least 2 times)
+      check: MatchFileFragment
+      options:
+        fragment: ' == '
+        count: 3
+        exact: false
+    - description: Complete all TODOs (no TODO comments remaining in main.py)
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: false
+
+- writing/reflection.md:
+    - description: Check reflection exists
+      check: ConfirmFileExists
+    - description: Write sufficient words (at least 200 words)
+      check: CountFileWords
+      options:
+        count: 200
+    - description: Use markdown lists using - (at least 12 list items total)
+      check: MatchFileFragment
+      options:
+        fragment: '- '
+        count: 6
+        exact: false

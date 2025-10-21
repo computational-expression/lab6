@@ -229,7 +229,7 @@ Simon Memory Game
 Player name: JJ
 Rounds (3-6)? 4
 
-Hello Priya!
+Hello JJ!
 Watch sequences, then press button for the correct LED!
 Press button to continue...
 

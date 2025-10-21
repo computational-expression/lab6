@@ -103,7 +103,7 @@ Your Simon memory game must implement these **7 essential functions**:
 - **Parameters**: Button object and timeout duration in seconds
 - **Returns**: True if button pressed within timeout, False otherwise
 
-```
+```python
 def get_button_press(button, timeout=2):
     """Wait for button press with timeout.
     
@@ -125,7 +125,7 @@ def get_button_press(button, timeout=2):
         time.sleep(0.05)
     
     return False
-    ```
+```
 
 #### 3. `test_memory(leds, sequence, button)`
 - **Purpose**: Test if player can reproduce the memorized sequence
@@ -226,7 +226,7 @@ Example output from your Simon memory game:
 ```
 Simon Memory Game
 =========================
-Player name: Priya
+Player name: JJ
 Rounds (3-6)? 4
 
 Hello Priya!
@@ -245,10 +245,10 @@ Sequence complete!
 Your turn! Press button when you see the correct LED:
 
 Step 1: Which LED comes next?
-  ✓ Correct! LED 2
+   Correct! LED 2
 
 Step 2: Which LED comes next?
-  ✓ Correct! LED 1
+   Correct! LED 1
 
 PERFECT! Score: 105
 
@@ -267,10 +267,10 @@ Sequence complete!
 Your turn! Press button when you see the correct LED:
 
 Step 1: Which LED comes next?
-  ✓ Correct! LED 1
+   Correct! LED 1
 
 Step 2: Which LED comes next?
-  ✗ Missed LED 3
+   Missed LED 3
 
 Got 1/3. Score: 33
 
@@ -279,7 +279,7 @@ Got 1/3. Score: 33
 =========================
 FINAL RESULTS
 =========================
-Player: Priya
+Player: JJ
 Perfect rounds: 2/4
 Total score: 201
 

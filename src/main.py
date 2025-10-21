@@ -42,10 +42,10 @@ def get_button_press(button, timeout=2):
     """
     # TODO: Create a variable to store the start time and assign it to time.time(), which gives current time
     
-    # TODO: Create a loop that continues until current time - start time < timeout
+    # TODO: Create a loop that continues until (current time - start time < timeout)
     # - Check if button is pressed (button pressed condition)
     # - If pressed, wait until release with another loop until button released
-    # - Add time.sleep(0.2) to prevent bouncing and return True
+    # - Add time.sleep to prevent bouncing and return True
     
     # TODO: Return False if timeout reached
 
@@ -67,14 +67,15 @@ def test_memory(leds, sequence, button):
     # TODO: Loop through sequence using range(length) to get index
     # At each step:
     # - Get expected_led = sequence[i]
-    # - Print f"\nStep {i+1}: Which LED comes next?"
-    # - Loop through all LEDs (range(total_leds))
+    # - Print something like f"\nStep {i+1}: Which LED comes next?"
+    # - Loop through all LEDs (range(leds))
     #   - Turn on current LED
     #   - Check if this is the expected LED (led_index matches expected_led)
-    #     - If correct: wait until button press with get_button_press()
-    #       - If button pressed: print success, increment correct, do success flash, break
-    #       - If timeout: print miss message, turn off LED, return correct
-    #     - If wrong LED: just wait 0.4 seconds, turn off, wait 0.2 seconds
+    #     - If correct (they match): 
+    #       - Check if button was pressed using the correct function
+    #           - If button was pressed: print success, increment correct, do success flash
+    #           - Else (timed out): print miss message, turn off LED, return correct
+    #     - Else (wrong LED): just wait 0.4 seconds, turn off, wait 0.2 seconds
     
     # TODO: Return the correct count
 
@@ -93,7 +94,9 @@ def calculate_score(correct, total, round_num):
     
     # TODO: Calculate accuracy = correct / total
     # TODO: Calculate base_score = int(accuracy * 100)
-    # TODO: Calculate bonus = round_num * 5 if accuracy is 1.0 otherwise 0
+    # TODO: Calculate bonus using if-else:
+    # TODO: If accuracy is 1.0, set bonus = round_num * 5
+    # TODO: Otherwise, set bonus = 0
     
     # TODO: Return base_score + bonus
 
@@ -135,29 +138,29 @@ def main():
     # TODO: Ensure rounds is between 3 and 6 using max() and min()
     
     # TODO: Print welcome message and instructions
-    # TODO: Wait for button press to start
+    # TODO: Call the function* to wait for button press to start
     
     # TODO: Initialize total_score = 0 and perfect_rounds = 0
     
     # TODO: Create game loop that iterates through each round (1 to rounds+1):
     # - Print round header with separators
     # - Calculate sequence length = round_num + 1
-    # - Generate random sequence using list comprehension and random.randint(0, 2)
+    # - Generate random sequence by creating empty list, then using for loop to append random.randint(0, 2)
     # - Print sequence length
-    # - Call show_sequence() and test_memory()
-    # - Calculate score using calculate_score()
+    # - Call show_sequence()* and test_memory()* functions
+    # - Calculate score using calculate_score()* function
     # - Add to total_score
     # - Check if perfect (correct matches seq_length) and increment perfect_rounds
     # - Print score result
-    # - Call show_feedback()
-    # - If not last round, call wait_for_button()
+    # - Call show_feedback()*
+    # - If not last round, call wait_for_button()*
     
     # TODO: Print final results section
     # TODO: Print player stats and total score
     
     # TODO: Victory celebration based on performance
-    # - If perfect_rounds matches rounds: print "SIMON MASTER!" and special LED pattern
-    # - Elif perfect_rounds >= rounds // 2: print "Great memory!" and show success feedback
+    # - If perfect_rounds matches rounds: print something positive and special LED pattern
+    # - Elif perfect_rounds >= rounds // 2: print something else positive and call function* to show feedback
     
     # TODO: Clean up - turn off all LEDs
     # TODO: Print "Game complete!"

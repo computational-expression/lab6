@@ -19,7 +19,7 @@ def show_sequence(leds, sequence):
     """
     # TODO: Print "Watch the sequence:" and wait 1 second
     
-    # TODO: Loop through the sequence using range(length) to get index
+    # TODO: Loop through the sequence using range(sequence) to get index
     # At each step:
     # - Get led_index = sequence[i]
     # - Print f"  Step {i+1}: LED {led_index + 1}"
